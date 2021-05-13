@@ -45,40 +45,40 @@ public class CarFrame extends JFrame {
 		
 		
 		JList listCars = new JList();
-		listCars.setBounds(26, 22, 258, 172);
+		listCars.setBounds(13, 12, 281, 172);
 		contentPane.add(listCars);
 		listCars.setModel(modelCar);
 		
 		JLabel lblPlaca = new JLabel("Placa:");
-		lblPlaca.setBounds(40, 230, 70, 15);
+		lblPlaca.setBounds(58, 250, 70, 15);
 		contentPane.add(lblPlaca);
 		
 		txtLicense = new JTextField();
-		txtLicense.setBounds(30, 261, 114, 19);
+		txtLicense.setBounds(40, 277, 114, 19);
 		contentPane.add(txtLicense);
 		txtLicense.setColumns(10);
 		
 		JLabel lblModelo = new JLabel("Modelo:");
-		lblModelo.setBounds(182, 230, 70, 15);
+		lblModelo.setBounds(196, 250, 70, 15);
 		contentPane.add(lblModelo);
 		
 		txtModel = new JTextField();
-		txtModel.setBounds(157, 261, 114, 19);
+		txtModel.setBounds(180, 277, 114, 19);
 		contentPane.add(txtModel);
 		txtModel.setColumns(10);
 		
 		JLabel lblCor = new JLabel("Cor:");
-		lblCor.setBounds(306, 230, 70, 15);
+		lblCor.setBounds(334, 250, 70, 15);
 		contentPane.add(lblCor);
 		
 		txtColor = new JTextField();
-		txtColor.setBounds(283, 261, 114, 19);
+		txtColor.setBounds(325, 277, 114, 19);
 		contentPane.add(txtColor);
 		txtColor.setColumns(10);
 		
 		
 		JButton btnNovoCarro = new JButton("Adicionar Carro");
-		btnNovoCarro.setBounds(111, 296, 203, 25);
+		btnNovoCarro.setBounds(111, 308, 203, 25);
 		contentPane.add(btnNovoCarro);
 		btnNovoCarro.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -123,7 +123,7 @@ public class CarFrame extends JFrame {
 		txtFIlter.setColumns(10);
 		
 		JLabel lblCadastrar = new JLabel("Cadastrar carros");
-		lblCadastrar.setBounds(141, 195, 130, 15);
+		lblCadastrar.setBounds(184, 208, 130, 15);
 		contentPane.add(lblCadastrar);
 		
 		
