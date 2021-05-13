@@ -15,6 +15,8 @@ import javax.swing.event.ListSelectionEvent;
 import javax.swing.JList;
 import javax.swing.JOptionPane;
 import javax.swing.JButton;
+import javax.swing.JTextField;
+import javax.swing.JLabel;
 
 public class ListFrame extends JFrame {
 
@@ -23,6 +25,7 @@ public class ListFrame extends JFrame {
 	private UserRepository ur;
 	private CarRepository cr;
 	private DefaultListModel<User> modelUser = new DefaultListModel<>();
+	private JTextField txtUsername;
 
 
 	public ListFrame(UserRepository ur, CarRepository cr) {
@@ -30,14 +33,14 @@ public class ListFrame extends JFrame {
 		this.ur = ur;
 		setTitle("Lista de usuário");
 		
-		setBounds(100, 100, 450, 300);
+		setBounds(100, 100, 486, 348);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
 		JList listUsers = new JList();
-		listUsers.setBounds(26, 12, 382, 185);
+		listUsers.setBounds(26, 12, 267, 294);
 		contentPane.add(listUsers);
 		listUsers.setModel(modelUser);
 		
@@ -50,11 +53,41 @@ public class ListFrame extends JFrame {
 		btnNovoUsurio.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				MainFrame mf = new MainFrame(ur);
-//				CarFrame cf = new CarFrame(ur, cr);
 			}
 		});
-		btnNovoUsurio.setBounds(248, 209, 169, 25);
+		btnNovoUsurio.setBounds(323, 259, 141, 25);
 		contentPane.add(btnNovoUsurio);
+		
+		JButton btnFilter = new JButton("Filtrar");
+		btnFilter.setBounds(318, 103, 146, 25);
+		contentPane.add(btnFilter);
+		btnFilter.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				modelUser.removeAllElements();							
+				List<User> users = ur.findByUsernameContaining(txtUsername.getText());
+				modelUser.addAll(users);
+			}
+		});
+		
+		
+		txtUsername = new JTextField();
+		txtUsername.setBounds(318, 72, 146, 19);
+		contentPane.add(txtUsername);
+		txtUsername.setColumns(10);
+		
+		JLabel lblUsername = new JLabel("Username: ");
+		lblUsername.setBounds(323, 45, 96, 15);
+		contentPane.add(lblUsername);
+		
+		JButton btnCleanFIlter = new JButton("Limpar FIltro");
+		btnCleanFIlter.setBounds(318, 140, 146, 25);
+		contentPane.add(btnCleanFIlter);
+		btnCleanFIlter.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				updateList();
+			}
+		});
+		
 				
 		updateList();
 		this.setVisible(true);
